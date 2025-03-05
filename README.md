@@ -15,6 +15,10 @@ A microservices-based Online Bookstore System built with **Spring Boot**, **Spri
 - **API Documentation**: Swagger UI for API exploration.
 - **Testing**: Comprehensive API tests with Postman.
 
+## 🌐 Hosted Documentation
+A static version of the API documentation is hosted on GitHub Pages: [Online Bookstore API Docs](https://lakshay1341.github.io/online-bookstore/)
+
+
 ## 🏗️ Architecture
 The system consists of the following microservices:
 - **Eureka Server**: Service registry for discovery.
@@ -73,9 +77,6 @@ Screenshots of Swagger UI:
    - `username`: `admin`
    - `password`: `password`
 3. Run the collection to test all API endpoints.
-
-## 🌐 Hosted Documentation
-A static version of the API documentation is hosted on GitHub Pages: [Online Bookstore API Docs](https://lakshay1341.github.io/online-bookstore/)
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
