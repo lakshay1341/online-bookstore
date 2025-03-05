@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Bookstore API Documentation</title>
+    <link rel="stylesheet" href="swagger-ui-dist/swagger-ui.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,12 +18,18 @@
         .section {
             margin: 20px 0;
         }
-        a {
-            color: #007bff;
-            text-decoration: none;
+        .swagger-container {
+            margin-top: 20px;
         }
-        a:hover {
-            text-decoration: underline;
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        #error-message {
+            color: red;
+            display: none;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -32,12 +39,50 @@
 
     <div class="section">
         <h2>📖 API Endpoints</h2>
-        <p>Select a service to view its API documentation (hosted on SwaggerHub):</p>
-        <ul>
-            <li><a href="https://app.swaggerhub.com/apis/LakshayChaudhary/Book-Service-API/v0" target="_blank">Book Service API</a></li>
-            <li><a href="https://app.swaggerhub.com/apis/LakshayChaudhary/Order-Service-API/v0" target="_blank">Order Service API</a></li>
-            <li><a href="https://app.swaggerhub.com/apis/LakshayChaudhary/Inventory-Service-API/v0" target="_blank">Inventory Service API</a></li>
-        </ul>
+        <p>Select a service to view its API documentation:</p>
+        <select id="serviceSelector" onchange="loadSwaggerUI()">
+            <option value="http://localhost:8081/api-docs">Book Service API</option>
+            <option value="http://localhost:8082/api-docs">Order Service API</option>
+            <option value="http://localhost:8083/api-docs">Inventory Service API</option>
+        </select>
+        <div id="error-message"></div>
+        <div id="swagger-ui" class="swagger-container"></div>
     </div>
+
+    <script src="swagger-ui-dist/swagger-ui-bundle.js"></script>
+    <script src="swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
+    <script>
+        async function loadSwaggerUI() {
+            const selectedService = document.getElementById('serviceSelector').value;
+            const errorMessageDiv = document.getElementById('error-message');
+            errorMessageDiv.style.display = 'none';
+            errorMessageDiv.innerText = '';
+
+            try {
+                const response = await fetch(selectedService);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch ${selectedService}: ${response.status} ${response.statusText}`);
+                }
+                const spec = await response.json();
+
+                const ui = SwaggerUIBundle({
+                    spec: spec,
+                    dom_id: '#swagger-ui',
+                    presets: [
+                        SwaggerUIBundle.presets.apis,
+                        SwaggerUIStandalonePreset
+                    ],
+                    layout: "StandaloneLayout"
+                });
+            } catch (error) {
+                errorMessageDiv.style.display = 'block';
+                errorMessageDiv.innerText = `Error loading API documentation: ${error.message}`;
+                console.error(error);
+            }
+        }
+
+        // Load the default service (Book Service) on page load
+        window.onload = loadSwaggerUI;
+    </script>
 </body>
 </html>
