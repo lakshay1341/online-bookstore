@@ -23,31 +23,6 @@ The system consists of the following microservices:
 - **Order Service**: Handles order creation and management.
 - **Inventory Service**: Tracks book stock levels.
 
-### Architecture Diagram
-![Architecture Diagram](https://raw.githubusercontent.com/lakshay1341/online-bookstore/main/docs/architecture-diagram.png)
-
-*Diagram Explanation*: The client interacts with the API Gateway, which routes requests to the appropriate microservice. The Eureka Server enables service discovery, and each microservice communicates with the MySQL database for persistence.
-
-### API Flow
-The following diagram illustrates the API flow for placing an order:
-
-Client → API Gateway (/orders) → Order Service → Inventory Service (update stock) → MySQL
-← API Gateway ← Order Service ← Response (success/failure)
-
-
-### Entity-Relationship (ER) Diagram
-The database schema includes the following relationships:
-- `books` ↔ `inventory`: One-to-One (each book has one inventory record).
-- `orders` ↔ `books`: Many-to-Many (via `order_books` junction table).
-
-![ER Diagram](https://raw.githubusercontent.com/lakshay1341/online-bookstore/main/docs/er-diagram.png)
-
-*ER Diagram Details*:
-- `books`: Stores book details (id, title, author, price, isbn, genre, stock_quantity).
-- `orders`: Stores order details (id, order_date, customer_name, customer_email, total_amount).
-- `order_books`: Junction table linking orders and books.
-- `inventory`: Stores stock quantities (book_id, stock_quantity).
-
 ## 🛠️ Setup Instructions
 ### Prerequisites
 - Java 17
@@ -80,16 +55,16 @@ Explore the API endpoints using Swagger UI:
 - [Inventory Service Swagger](http://localhost:8083/swagger-ui.html)
 
 Screenshots of Swagger UI:
-- Book Service: ![Book Service Swagger](https://raw.githubusercontent.com/lakshay1341/online-bookstore/main/docs/swagger-screenshots/books_swagger.png)
-- Order Service: ![Order Service Swagger](https://raw.githubusercontent.com/lakshay1341/online-bookstore/main/docs/swagger-screenshots/orders_swagger.png)
-- Inventory Service: ![Inventory Service Swagger](https://raw.githubusercontent.com/lakshay1341/online-bookstore/main/docs/swagger-screenshots/inventory_swagger.png)
+- Book Service: ![Book Service Swagger](https://github.com/lakshay1341/online-bookstore/blob/main/docs/books_swagger.png)
+- Order Service: ![Order Service Swagger](https://github.com/lakshay1341/online-bookstore/blob/main/docs/orders_swagger.png)
+- Inventory Service: ![Inventory Service Swagger](https://github.com/lakshay1341/online-bookstore/blob/main/docs/inventory_swagger.png)
 
 ## 📸 Screenshots
 ### Eureka Dashboard
-![Eureka Dashboard](https://raw.githubusercontent.com/lakshay1341/online-bookstore/main/docs/screenshots/eureka_dashboard.png)
+![Eureka Dashboard](https://github.com/lakshay1341/online-bookstore/blob/main/docs/eureka_dashboard.png)
 
 ### Postman Tests
-![Postman Test - GET /books](https://raw.githubusercontent.com/lakshay1341/online-bookstore/main/docs/api-testing/postman-screenshots/postman_get_books.png)
+![Postman Test - GET /books](https://github.com/lakshay1341/online-bookstore/blob/main/docs/postman_get_books.png)
 
 ## 🧪 Running Tests
 1. Import the Postman collection into Postman.
@@ -106,5 +81,5 @@ A static version of the API documentation is hosted on GitHub Pages: [Online Boo
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📧 Contact
-For questions or feedback, reach out to me at [lakshay1341@example.com](mailto:lakshaychaudhary2003@gmail.com).
+For questions or feedback, reach out to me at [lakshaychaudhary2003@gmail.com](mailto:lakshaychaudhary2003@gmail.com).
   
