@@ -4,85 +4,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Bookstore API Documentation</title>
-    <link rel="stylesheet" href="swagger-ui-dist/swagger-ui.css" />
+    <!-- Google Fonts: Source Sans Pro (SwaggerHub's font) -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+            padding: 0;
+            background-color: #0f1515;
+            color: #ffffff;
         }
-        h1 {
-            color: #333;
+        /* Header */
+        .header {
+            background-color: #1a2526;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        .header h1 i {
+            margin-right: 0.5rem;
+            color: #00d1b2;
+        }
+        .header .nav-links a {
+            color: #b3b9b9;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        .header .nav-links a:hover {
+            color: #00d1b2;
+        }
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero h1 i {
+            margin-right: 0.75rem;
+            color: #00d1b2;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #b3b9b9;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .section {
-            margin: 20px 0;
+            background-color: #242f30;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
         }
-        .swagger-container {
-            margin-top: 20px;
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
         }
-        select {
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 20px;
+        .section h2 i {
+            margin-right: 0.5rem;
+            color: #00d1b2;
         }
-        #error-message {
-            color: red;
-            display: none;
-            margin-bottom: 20px;
+        .section p {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #b3b9b9;
+            margin-bottom: 1.5rem;
+        }
+        .api-links {
+            list-style: none;
+            padding: 0;
+        }
+        .api-links li {
+            margin: 0.75rem 0;
+        }
+        .api-links li a {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #00d1b2;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        .api-links li a i {
+            margin-right: 0.75rem;
+            color: #00d1b2;
+        }
+        .api-links li a:hover {
+            background-color: #2e3b3c;
+            color: #00e6c3;
+            transform: translateX(5px);
+        }
+        .api-links li a:hover i {
+            color: #00e6c3;
+        }
+        /* Footer */
+        .footer {
+            background-color: #1a2526;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #b3b9b9;
+        }
+        .footer a {
+            color: #00d1b2;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #00e6c3;
         }
     </style>
 </head>
 <body>
-    <h1>📚 Online Bookstore API Documentation</h1>
-    <p>Welcome to the API documentation for the Online Bookstore System. This project demonstrates a microservices-based bookstore application built with Spring Boot and Spring Cloud.</p>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>
+                <i class="fas fa-book"></i>
+                Online Bookstore API
+            </h1>
+            <div class="nav-links">
+                <a href="https://github.com/lakshay1341/online-bookstore" target="_blank">GitHub</a>
+                <a href="mailto:lakshay1341@example.com">Contact</a>
+            </div>
+        </div>
+    </header>
 
-    <div class="section">
-        <h2>📖 API Endpoints</h2>
-        <p>Select a service to view its API documentation:</p>
-        <select id="serviceSelector" onchange="loadSwaggerUI()">
-            <option value="http://localhost:8081/api-docs">Book Service API</option>
-            <option value="http://localhost:8082/api-docs">Order Service API</option>
-            <option value="http://localhost:8083/api-docs">Inventory Service API</option>
-        </select>
-        <div id="error-message"></div>
-        <div id="swagger-ui" class="swagger-container"></div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>
+                <i class="fas fa-book-open"></i>
+                Online Bookstore API Documentation
+            </h1>
+            <p>
+                Welcome to the API documentation for the Online Bookstore System. This project demonstrates a microservices-based bookstore application built with Spring Boot and Spring Cloud.
+            </p>
+        </div>
     </div>
 
-    <script src="swagger-ui-dist/swagger-ui-bundle.js"></script>
-    <script src="swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
-    <script>
-        async function loadSwaggerUI() {
-            const selectedService = document.getElementById('serviceSelector').value;
-            const errorMessageDiv = document.getElementById('error-message');
-            errorMessageDiv.style.display = 'none';
-            errorMessageDiv.innerText = '';
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section">
+            <h2>
+                <i class="fas fa-code"></i>
+                API Endpoints
+            </h2>
+            <p>Select a service to view its API documentation (hosted on SwaggerHub):</p>
+            <ul class="api-links">
+                <li>
+                    <a href="https://app.swaggerhub.com/apis/LakshayChaudhary/Book-Service-API/v0" target="_blank">
+                        <i class="fas fa-book-open"></i>
+                        Book Service API
+                    </a>
+                </li>
+                <li>
+                    <a href="https://app.swaggerhub.com/apis/LakshayChaudhary/Order-Service-API/v0" target="_blank">
+                        <i class="fas fa-shopping-cart"></i>
+                        Order Service API
+                    </a>
+                </li>
+                <li>
+                    <a href="https://app.swaggerhub.com/apis/LakshayChaudhary/Inventory-Service-API/v0" target="_blank">
+                        <i class="fas fa-warehouse"></i>
+                        Inventory Service API
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-            try {
-                const response = await fetch(selectedService);
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch ${selectedService}: ${response.status} ${response.statusText}`);
-                }
-                const spec = await response.json();
-
-                const ui = SwaggerUIBundle({
-                    spec: spec,
-                    dom_id: '#swagger-ui',
-                    presets: [
-                        SwaggerUIBundle.presets.apis,
-                        SwaggerUIStandalonePreset
-                    ],
-                    layout: "StandaloneLayout"
-                });
-            } catch (error) {
-                errorMessageDiv.style.display = 'block';
-                errorMessageDiv.innerText = `Error loading API documentation: ${error.message}`;
-                console.error(error);
-            }
-        }
-
-        // Load the default service (Book Service) on page load
-        window.onload = loadSwaggerUI;
-    </script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Lakshay Chaudhary. All rights reserved.</p>
+            <p>
+                <a href="https://github.com/lakshay1341/online-bookstore" target="_blank">
+                    <i class="fab fa-github"></i> GitHub Repository
+                </a>
+                |
+                <a href="mailto:lakshaychaudhary2003@gmail.com">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
