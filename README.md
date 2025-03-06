@@ -11,7 +11,6 @@ A microservices-based Online Bookstore System built with **Spring Boot**, **Spri
 - **Service Discovery**: Netflix Eureka for dynamic service registration and discovery.
 - **API Gateway**: Centralized routing with Spring Cloud Gateway.
 - **Database**: MySQL for persistent storage with JPA/Hibernate.
-- **Resilience**: Circuit breaker and retry mechanisms with Resilience4j.
 - **API Documentation**: Swagger UI for API exploration.
 - **Testing**: Comprehensive API tests with Postman.
 
