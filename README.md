@@ -2,7 +2,7 @@
 
 ![Banner](https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1498&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
-A microservices-based Online Bookstore System built with **Spring Boot**, **Spring Cloud**, **Netflix Eureka**, and **MySQL**. This project demonstrates a distributed system with service discovery, API Gateway, and inter-service communication, featuring book management, order processing, and inventory tracking.
+A microservices-based Online Bookstore System built with **Spring Boot**, **Spring Cloud**, **Spring Security**, **Netflix Eureka**, and **MySQL**. This project demonstrates a distributed system with service discovery, API Gateway, and inter-service communication, featuring book management, order processing, and inventory tracking.
 
 ![GitHub](https://img.shields.io/github/license/lakshay1341/online-bookstore) ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-brightgreen) ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 
