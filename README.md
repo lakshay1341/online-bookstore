@@ -69,13 +69,11 @@ Screenshots of Swagger UI:
 ### Postman Tests
 ![Postman Test - GET /books](https://github.com/lakshay1341/online-bookstore/blob/main/docs/postman_get_books.png)
 
-## 🧪 Running Tests
-1. Import the Postman collection into Postman.
-2. Set up the environment variables:
+## 🧪 Running API
+Login:
    - `baseUrl`: `http://localhost:8080`
    - `username`: `admin`
    - `password`: `password`
-3. Run the collection to test all API endpoints.
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
